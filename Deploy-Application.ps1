@@ -56,15 +56,15 @@ Try {
 	##* VARIABLE DECLARATION
 	##*===============================================
 	## Variables: Application
-	[string]$appVendor = ''
-	[string]$appName = ''
-	[string]$appVersion = ''
+	[string]$appVendor = 'Slic3r'
+	[string]$appName = 'Slic3r'
+	[string]$appVersion = '1.2.9'
 	[string]$appArch = ''
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
 	[string]$appScriptVersion = '1.0.0'
-	[string]$appScriptDate = '02/12/2017'
-	[string]$appScriptAuthor = '<author name>'
+	[string]$appScriptDate = '05/31/2017'
+	[string]$appScriptAuthor = 'Reuther'
 	##*===============================================
 	## Variables: Install Titles (Only set here to override defaults set by the toolkit)
 	[string]$installName = ''
@@ -141,7 +141,7 @@ Try {
 				Copy-File -Path "$dirSupportFiles\Slic3r.lnk" -Destination "$envProgramData\Microsoft\Windows\Start Menu\Programs" -Recurse
 
 		#Disable Updates Current Users / Default User
-				Get-ChildItem -Path "${envSystemDrive}\Users" -Force | ?{ $_.PSIsContainer } | ForEach-Object {
+				Get-ChildItem -Path "${envSystemDrive}\Users" -Force | Where-Object {$_.PSIsContainer -eq $True} | ForEach-Object {
 
 						$UserRoamFolder = $_.FullName + "\AppData\Roaming\Slic3r"
 
